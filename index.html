@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dashboard</h1>
+
+      <div id="app"></div>
+    </div>
+    
+    <script type="text/ractive" id="template">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Showing classes for {{ getDisplayDate() }}</h4>
+          <ul class="list-group">
+            {{#each sessions}}
+              <li class="list-group-item">
+                <strong>{{ subjects[0] }}&nbsp;</strong><br>
+                <span class="small">{{locations[0]}}</span>
+                <span class="pull-right">{{ formatStamp(start) }} - {{ formatStamp(end) }}</span>
+                {{#if changeDescription}}
+                  <p class="help-block">{{ changeDescription }}</p>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </script>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+
+</html>

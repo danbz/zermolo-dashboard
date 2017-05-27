@@ -27,7 +27,7 @@ const Ractive = require('ractive');
 const formatStamp = (stamp) =>
   Moment(stamp * 1000).format('HH:mm');
 
-const DISPLAY_DATE = Moment();
+const DISPLAY_DATE = Moment().day(8);
 
 var ractive = new Ractive({
   target: '#app',

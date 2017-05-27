@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -10,38 +11,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
     <div class="container">
       <div id="app"></div>
+      <iframe src="http://dakboard.com/app?p=629c695a8b19f6d86dc3b4f29a705fe3"></iframe>
+
     </div>
 
     <script type="text/ractive" id="template">
-      <div class="panel panel-default" style="margin-top: 30px">
-        <div class="panel-body">
-          {{#if sessions === null}}
-            Loading...&nbsp;&nbsp;<i class="fa fa-spin fa-cog"></i>
-          {{/if}}
-          {{#if sessions.length}}
-            <h4>Showing classes for {{ getDisplayDate() }}</h4>
-            <ul class="list-group">
-              {{#each sessions}}
-                <li class="list-group-item">
-                  <strong>{{ subjects[0] }}&nbsp;</strong><br>
-                  <span class="small">{{locations[0]}}</span>
-                  <span class="pull-right">{{ formatStamp(start) }} - {{ formatStamp(end) }}</span>
-                  {{#if changeDescription}}
-                    <p class="help-block">{{ changeDescription }}</p>
-                  {{/if}}
-                </li>
-              {{/each}}
-            </ul>
-          {{/if}}
-          {{#if sessions.length === 0}}
-            <h4>No classes were found for {{ getDisplayDate() }}</h4>
-          {{/if}}
-        </div>
-      </div>
+      {{#if sessions === null}}
+        Loading...&nbsp;&nbsp;<i class="fa fa-spin fa-cog"></i>
+      {{/if}}
+      {{#if sessions.length}}
+        <h4>Showing classes for {{ getDisplayDate() }}</h4>
+        <hr>
+        {{#each sessions}}
+          <div>
+            <span class="pull-right">{{ formatStamp(start) }} - {{ formatStamp(end) }}</span>
+            <strong>{{ subjects[0] }}&nbsp;</strong><br>
+            <span class="small">{{locations[0]}}</span>
+
+            {{#if changeDescription}}
+              <p class="help-block">{{ changeDescription }}</p>
+            {{/if}}
+            <hr>
+          </div>
+        {{/each}}
+      {{/if}}
+      {{#if sessions.length === 0}}
+        <h4>No classes were found for {{ getDisplayDate() }}</h4>
+      {{/if}}
     </script>
     <script>
       // You can also require other files to run in this process

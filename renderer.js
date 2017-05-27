@@ -33,10 +33,10 @@ var ractive = new Ractive({
   target: '#app',
   template: '#template',
   data: {
-    sessions: [],
+    sessions: null,
     formatStamp,
     getDisplayDate: () => {
-      return DISPLAY_DATE.format('dddd, MMMM Do YYYY');
+      return DISPLAY_DATE.format('dddd, MMMM Do');
     },
   }
 });
